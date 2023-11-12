@@ -4,7 +4,6 @@ import {RouterModule} from "@angular/router";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {SharedModule} from "../../shared/shared.module";
 
-
 @NgModule({
   declarations: [],
   imports: [
@@ -14,5 +13,5 @@ import {SharedModule} from "../../shared/shared.module";
     SharedModule
   ]
 })
-export class DefaultModule {
+export class FullPageAdminModule {
 }

@@ -6,12 +6,12 @@ import {HeaderComponent} from "../../shared/components/header/header.component";
 import {FlexLayoutModule} from "@angular/flex-layout";
 
 @Component({
-  selector: 'app-fullpage',
+  selector: 'app-full-page',
   standalone: true,
   imports: [CommonModule, RouterOutlet, FooterComponent, HeaderComponent, FlexLayoutModule],
-  templateUrl: './fullpage.component.html',
-  styleUrl: './fullpage.component.scss'
+  templateUrl: './full-page.component.html',
+  styleUrl: './full-page.component.scss'
 })
-export class FullpageComponent {
+export class FullPageComponent {
 
 }

@@ -3,8 +3,10 @@ import {RouterModule, Routes} from '@angular/router';
 import {ProductComponent} from "./modules/product/product.component";
 import {HomeComponent} from "./modules/home/home.component";
 import {DefaultComponent} from "./layouts/default/default.component";
-import {FullpageComponent} from "./layouts/fullpage/fullpage.component";
+import {FullPageComponent} from "./layouts/fullpage/full-page.component";
 import {LoginComponent} from "./modules/login/login.component";
+import {FullPageAdminComponent} from "./layouts/fullpageadmin/full-page-admin.component";
+import {AdminComponent} from "./modules/admin/admin.component";
 
 const routes: Routes = [
   {
@@ -17,9 +19,16 @@ const routes: Routes = [
   },
   {
     path: '',
-    component: FullpageComponent,
+    component: FullPageComponent,
     children: [
       {path: 'login', component: LoginComponent}
+    ]
+  },
+  {
+    path: '',
+    component: FullPageAdminComponent,
+    children: [
+      {path: 'admin', component: AdminComponent}
     ]
   }
 ];
