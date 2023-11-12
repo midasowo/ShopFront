@@ -7,6 +7,7 @@ import {DefaultModule} from "./layouts/default/default.module";
 import {RouterModule} from "@angular/router";
 import {FullPageModule} from "./layouts/fullpage/full-page.module";
 import {FullPageAdminModule} from "./layouts/fullpageadmin/full-page-admin.module";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import {FullPageAdminModule} from "./layouts/fullpageadmin/full-page-admin.modul
     AppRoutingModule,
     DefaultModule,
     FullPageModule,
-    FullPageAdminModule
+    FullPageAdminModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
