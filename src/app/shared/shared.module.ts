@@ -1,16 +1,24 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule} from "@angular/router";
-import {FlexModule} from "@angular/flex-layout";
-
+import {FlexLayoutModule} from "@angular/flex-layout";
+import {MaterialModule} from "./material.module";
+import {FooterComponent} from "./components/footer/footer.component";
+import {HeaderComponent} from "./components/header/header.component";
+import {SidebarComponent} from "./components/sidebar/sidebar.component";
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
     RouterModule,
-    FlexModule
-  ]
+    FlexLayoutModule,
+    FooterComponent,
+    HeaderComponent,
+    SidebarComponent,
+    MaterialModule
+  ],
+  exports: [FooterComponent, HeaderComponent, SidebarComponent]
 })
 export class SharedModule {
 }

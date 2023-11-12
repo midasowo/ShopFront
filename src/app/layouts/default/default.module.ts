@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule} from "@angular/router";
 import {FlexLayoutModule} from "@angular/flex-layout";
+import {SharedModule} from "../../shared/shared.module";
 
 
 @NgModule({
@@ -9,7 +10,8 @@ import {FlexLayoutModule} from "@angular/flex-layout";
   imports: [
     CommonModule,
     RouterModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    SharedModule
   ]
 })
 export class DefaultModule {
