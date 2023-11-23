@@ -18,7 +18,7 @@ import {SidebarComponent} from "./components/sidebar/sidebar.component";
     SidebarComponent,
     MaterialModule
   ],
-  exports: [FooterComponent, HeaderComponent, SidebarComponent, MaterialModule]
+  exports: [FooterComponent, HeaderComponent, SidebarComponent, FlexLayoutModule, MaterialModule]
 })
 export class SharedModule {
 }

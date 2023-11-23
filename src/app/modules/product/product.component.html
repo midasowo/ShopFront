@@ -1,11 +1,26 @@
 <h1>produkty</h1>
 <mat-card>
-  <mat-card-header>
-    <mat-card-title>Actions Buttons</mat-card-title>
-    <mat-card-subtitle>Start</mat-card-subtitle>
-  </mat-card-header>
-  <mat-card-actions>
-    <button mat-button>LIKE</button>
-    <button mat-button>SHARE</button>
+  <div flexlayout="row">
+    <div flexlayout="column" fxFlex>
+      <mat-card-header>
+        <mat-card-title>Product name</mat-card-title>
+        <mat-card-subtitle>category</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-header>
+        <div flexlayout="row">
+          <img src="assets/image-placeholder.png" alt="" mat-card-lg-image class="product-image">
+          <mat-card-content fxFlex>Description</mat-card-content>
+        </div>
+      </mat-card-header>
+    </div>
+    <div>
+      <mat-card-header>
+        <div class="product-price">10,99 PLN</div>
+      </mat-card-header>
+    </div>
+  </div>
+  <mat-card-actions align="end" fxLayoutGap="10">
+    <button mat-flat-button color="accent">Show</button>
+    <button mat-flat-button color="primary">Add to cart</button>
   </mat-card-actions>
 </mat-card>
