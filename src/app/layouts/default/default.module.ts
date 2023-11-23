@@ -4,7 +4,6 @@ import {RouterModule} from "@angular/router";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {SharedModule} from "../../shared/shared.module";
 
-
 @NgModule({
   declarations: [],
   imports: [
