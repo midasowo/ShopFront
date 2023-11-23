@@ -5,12 +5,11 @@ import {FooterComponent} from "../../shared/components/footer/footer.component";
 import {HeaderComponent} from "../../shared/components/header/header.component";
 import {SidebarComponent} from "../../shared/components/sidebar/sidebar.component";
 import {SharedModule} from "../../shared/shared.module";
-import {FlexLayoutModule} from "@angular/flex-layout";
 
 @Component({
   selector: 'app-default',
   standalone: true,
-  imports: [CommonModule, RouterModule, FooterComponent, HeaderComponent, SidebarComponent, SharedModule, FlexLayoutModule],
+  imports: [CommonModule, RouterModule, FooterComponent, HeaderComponent, SidebarComponent, SharedModule],
   templateUrl: './default.component.html',
   styleUrl: './default.component.scss'
 })
