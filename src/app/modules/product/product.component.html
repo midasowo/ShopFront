@@ -1,21 +1,21 @@
-<h1>produkty</h1>
-<mat-card>
+<h1>Products</h1>
+<mat-card *ngFor="let product of products">
   <div flexlayout="row">
     <div flexlayout="column" fxFlex>
       <mat-card-header>
-        <mat-card-title>Product name</mat-card-title>
-        <mat-card-subtitle>category</mat-card-subtitle>
+        <mat-card-title>{{ product.name }}</mat-card-title>
+        <mat-card-subtitle>{{ product.category }}</mat-card-subtitle>
       </mat-card-header>
       <mat-card-header>
         <div flexlayout="row">
           <img src="assets/image-placeholder.png" alt="" mat-card-lg-image class="product-image">
-          <mat-card-content fxFlex>Description</mat-card-content>
+          <mat-card-content fxFlex>{{ product.description }}</mat-card-content>
         </div>
       </mat-card-header>
     </div>
     <div>
       <mat-card-header>
-        <div class="product-price">10,99 PLN</div>
+        <div class="product-price">{{ product.price }} {{ product.currency }}</div>
       </mat-card-header>
     </div>
   </div>
