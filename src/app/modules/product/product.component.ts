@@ -25,5 +25,5 @@ export class ProductComponent implements OnInit {
   getProducts() {
     this.products = this.productService.getProducts()
   }
-  
+
 }
