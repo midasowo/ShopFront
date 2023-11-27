@@ -3,6 +3,7 @@ import {CommonModule} from '@angular/common';
 import {SharedModule} from "../../shared/shared.module";
 import {ProductService} from "./product.service";
 import {Product} from "./model/product";
+import {Page} from "../../shared/model/page";
 
 @Component({
   selector: 'app-product',
@@ -13,7 +14,7 @@ import {Product} from "./model/product";
 })
 export class ProductComponent implements OnInit {
 
-  products: Product[] = []
+  page!: Page<Product>
 
   constructor(private productService: ProductService) {
   }
@@ -24,7 +25,8 @@ export class ProductComponent implements OnInit {
 
   getProducts() {
     this.productService.getProducts()
-      .subscribe(products => this.products = products)
+      .subscribe(page => this.page = page
+      )
   }
 
 }
