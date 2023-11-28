@@ -5,18 +5,19 @@ import {AdminProductService} from "./admin-product.service";
 import {MatPaginator} from "@angular/material/paginator";
 import {startWith, switchMap} from "rxjs";
 import {AdminProduct} from "./admin-product";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-admin-product',
   standalone: true,
-  imports: [CommonModule, SharedModule],
+  imports: [CommonModule, SharedModule, RouterLink],
   templateUrl: './admin-product.component.html',
   styleUrl: './admin-product.component.scss'
 })
 export class AdminProductComponent implements AfterViewInit {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator
-  displayedColumns: string[] = ["id", "name", "price"];
+  displayedColumns: string[] = ["id", "name", "price", "actions"];
   totalElements: number = 0
   data: AdminProduct[] = []
   isLoadingResults = true;
