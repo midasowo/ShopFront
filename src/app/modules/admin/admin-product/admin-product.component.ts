@@ -19,6 +19,7 @@ export class AdminProductComponent implements AfterViewInit {
   displayedColumns: string[] = ["id", "name", "price"];
   totalElements: number = 0
   data: AdminProduct[] = []
+  isLoadingResults = true;
 
   constructor(private adminProductService: AdminProductService) {
   }
@@ -27,11 +28,13 @@ export class AdminProductComponent implements AfterViewInit {
     this.paginator.page.pipe(
       startWith({}),
       switchMap(() => {
+        this.isLoadingResults = true;
         return this.adminProductService.getProducts(this.paginator.pageIndex, this.paginator.pageSize)
       }),
     ).subscribe(data => {
       this.totalElements = data.totalElements
       this.data = data.content
+      this.isLoadingResults = false;
     })
   }
 
