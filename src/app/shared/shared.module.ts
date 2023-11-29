@@ -6,6 +6,7 @@ import {MaterialModule} from "./material.module";
 import {FooterComponent} from "./components/footer/footer.component";
 import {HeaderComponent} from "./components/header/header.component";
 import {SidebarComponent} from "./components/sidebar/sidebar.component";
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [],
@@ -16,14 +17,17 @@ import {SidebarComponent} from "./components/sidebar/sidebar.component";
     FooterComponent,
     HeaderComponent,
     SidebarComponent,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule
   ],
   exports: [
     FooterComponent,
     HeaderComponent,
     SidebarComponent,
     FlexModule,
-    MaterialModule]
+    MaterialModule,
+    ReactiveFormsModule
+  ]
 })
 export class SharedModule {
 }

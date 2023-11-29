@@ -7,6 +7,7 @@ import {MatCardModule} from "@angular/material/card";
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatTableModule} from '@angular/material/table';
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {MatInputModule} from '@angular/material/input';
 
 @NgModule({
   declarations: [],
@@ -18,9 +19,18 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
     MatCardModule,
     MatPaginatorModule,
     MatTableModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatInputModule
   ],
-  exports: [MatIconModule, MatButtonModule, MatListModule, MatCardModule, MatPaginatorModule, MatTableModule, MatProgressSpinnerModule]
+  exports: [
+    MatIconModule,
+    MatButtonModule,
+    MatListModule,
+    MatCardModule,
+    MatPaginatorModule,
+    MatTableModule,
+    MatProgressSpinnerModule,
+    MatInputModule]
 })
 export class MaterialModule {
 }
