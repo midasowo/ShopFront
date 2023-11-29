@@ -39,26 +39,23 @@ export class AdminProductUpdateComponent implements OnInit {
   getProduct() {
     let id = this.getProductId()
     this.adminProductService.getProduct(id)
-      .subscribe(product => this.productForm.setValue({
-          name: product.name,
-          description: product.description,
-          category: product.category,
-          price: product.price,
-          currency: product.currency,
-        }
-      ))
+      .subscribe(product => this.mapFormValues(product))
   }
 
   submit() {
     let id = this.getProductId();
     this.adminProductService.saveProduct(id, this.productForm.value)
-      .subscribe(product => this.productForm.setValue({
-        name: product.name,
-        description: product.description,
-        category: product.category,
-        price: product.price,
-        currency: product.currency,
-      }))
+      .subscribe(product => this.mapFormValues(product))
+  }
+
+  private mapFormValues(product: AdminProductUpdate) {
+    this.productForm.setValue({
+      name: product.name,
+      description: product.description,
+      category: product.category,
+      price: product.price,
+      currency: product.currency
+    });
   }
 
   private getProductId(): number {
