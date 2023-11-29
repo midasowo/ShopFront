@@ -5,6 +5,7 @@ import {ActivatedRoute} from "@angular/router";
 import {AdminProductUpdateService} from "./admin-product-update.service";
 import {AdminProductUpdate} from "./model/admin-product-update";
 import {FormBuilder, FormGroup} from "@angular/forms";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-admin-product-update',
@@ -21,7 +22,8 @@ export class AdminProductUpdateComponent implements OnInit {
   constructor(
     private router: ActivatedRoute,
     private adminProductService: AdminProductUpdateService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private snackBar: MatSnackBar
   ) {
   }
 
@@ -45,7 +47,10 @@ export class AdminProductUpdateComponent implements OnInit {
   submit() {
     let id = this.getProductId();
     this.adminProductService.saveProduct(id, this.productForm.value)
-      .subscribe(product => this.mapFormValues(product))
+      .subscribe(product => {
+        this.mapFormValues(product)
+        this.snackBar.open("Product saved", 'OK', {duration: 2000})
+      })
   }
 
   private mapFormValues(product: AdminProductUpdate) {
