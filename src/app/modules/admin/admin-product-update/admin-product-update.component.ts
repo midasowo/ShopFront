@@ -37,7 +37,7 @@ export class AdminProductUpdateComponent implements OnInit {
   }
 
   getProduct() {
-    let id = Number(this.router.snapshot.params['id'])
+    let id = this.getProductId()
     this.adminProductService.getProduct(id)
       .subscribe(product => this.productForm.setValue({
           name: product.name,
@@ -47,5 +47,21 @@ export class AdminProductUpdateComponent implements OnInit {
           currency: product.currency,
         }
       ))
+  }
+
+  submit() {
+    let id = this.getProductId();
+    this.adminProductService.saveProduct(id, this.productForm.value)
+      .subscribe(product => this.productForm.setValue({
+        name: product.name,
+        description: product.description,
+        category: product.category,
+        price: product.price,
+        currency: product.currency,
+      }))
+  }
+
+  private getProductId(): number {
+    return Number(this.router.snapshot.params['id'])
   }
 }

@@ -14,4 +14,8 @@ export class AdminProductUpdateService {
   getProduct(id: number): Observable<AdminProductUpdate> {
     return this.http.get<AdminProductUpdate>('/api/admin/products/' + id)
   }
+
+  saveProduct(id: number, value: AdminProductUpdate) {
+    return this.http.put<AdminProductUpdate>('/api/admin/products/' + id, value)
+  }
 }
