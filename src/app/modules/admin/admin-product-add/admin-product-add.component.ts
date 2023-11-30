@@ -45,7 +45,7 @@ export class AdminProductAddComponent implements OnInit {
           this.router.navigate(["/admin/products/update", product.id])
             .then(() => this.snackBar.open("Product saved", 'OK', {duration: 2000}))
         },
-        error: err => this.adminMessageService.add("Error")
+        error: err => this.adminMessageService.addBackendErrors(err.error)
       })
   }
 }
