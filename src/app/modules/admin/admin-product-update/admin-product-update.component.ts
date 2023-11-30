@@ -4,9 +4,10 @@ import {SharedModule} from "../../../shared/shared.module";
 import {ActivatedRoute} from "@angular/router";
 import {AdminProductUpdateService} from "./admin-product-update.service";
 import {AdminProductUpdate} from "./model/admin-product-update";
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {AdminProductFormComponent} from "../admin-product-form/admin-product-form.component";
+import {AdminMessageService} from "../admin-message.service";
 
 @Component({
   selector: 'app-admin-product-update',
@@ -24,18 +25,19 @@ export class AdminProductUpdateComponent implements OnInit {
     private router: ActivatedRoute,
     private adminProductService: AdminProductUpdateService,
     private formBuilder: FormBuilder,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private adminMessageService: AdminMessageService
   ) {
   }
 
   ngOnInit(): void {
     this.getProduct()
     this.productForm = this.formBuilder.group({
-      name: [''],
-      description: [''],
-      category: [''],
-      price: [''],
-      currency: ['PLN'],
+      name: ['', [Validators.required, Validators.minLength(3)]],
+      description: ['', [Validators.required, Validators.minLength(3)]],
+      category: ['', [Validators.required, Validators.minLength(3)]],
+      price: ['', [Validators.required, Validators.min(0.01)]],
+      currency: ['PLN', Validators.required],
     })
   }
 
@@ -48,9 +50,12 @@ export class AdminProductUpdateComponent implements OnInit {
   submit() {
     let id = this.getProductId();
     this.adminProductService.saveProduct(id, this.productForm.value)
-      .subscribe(product => {
-        this.mapFormValues(product)
-        this.snackBar.open("Product updated", 'OK', {duration: 2000})
+      .subscribe({
+        next: product => {
+          this.mapFormValues(product)
+          this.snackBar.open("Product updated", 'OK', {duration: 2000})
+        },
+        error: err => this.adminMessageService.addBackendErrors(err.error)
       })
   }
 
