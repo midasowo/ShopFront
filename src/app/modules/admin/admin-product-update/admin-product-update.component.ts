@@ -6,11 +6,12 @@ import {AdminProductUpdateService} from "./admin-product-update.service";
 import {AdminProductUpdate} from "./model/admin-product-update";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {AdminProductFormComponent} from "../admin-product-form/admin-product-form.component";
 
 @Component({
   selector: 'app-admin-product-update',
   standalone: true,
-  imports: [CommonModule, SharedModule],
+  imports: [CommonModule, SharedModule, AdminProductFormComponent],
   templateUrl: './admin-product-update.component.html',
   styleUrl: './admin-product-update.component.scss'
 })
@@ -49,7 +50,7 @@ export class AdminProductUpdateComponent implements OnInit {
     this.adminProductService.saveProduct(id, this.productForm.value)
       .subscribe(product => {
         this.mapFormValues(product)
-        this.snackBar.open("Product saved", 'OK', {duration: 2000})
+        this.snackBar.open("Product updated", 'OK', {duration: 2000})
       })
   }
 

@@ -9,6 +9,7 @@ import {FullPageAdminComponent} from "./layouts/fullpageadmin/full-page-admin.co
 import {AdminComponent} from "./modules/admin/admin.component";
 import {AdminProductComponent} from "./modules/admin/admin-product/admin-product.component";
 import {AdminProductUpdateComponent} from "./modules/admin/admin-product-update/admin-product-update.component";
+import {AdminProductAddComponent} from "./modules/admin/admin-product-add/admin-product-add.component";
 
 const routes: Routes = [
   {
@@ -32,7 +33,8 @@ const routes: Routes = [
     children: [
       {path: 'admin', component: AdminComponent},
       {path: 'admin/products', component: AdminProductComponent},
-      {path: 'admin/products/update/:id', component: AdminProductUpdateComponent}
+      {path: 'admin/products/update/:id', component: AdminProductUpdateComponent},
+      {path: 'admin/products/add', component: AdminProductAddComponent}
     ]
   }
 ];

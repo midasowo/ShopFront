@@ -1,4 +1,8 @@
-<h1>List of products</h1>
+<h1>List of products
+  <button mat-raised-button color="accent" routerLink="/admin/products/add">Add product
+    <mat-icon>add</mat-icon>
+  </button>
+</h1>
 <div class="container">
   <div class="loading-shade"
        *ngIf="isLoadingResults">
