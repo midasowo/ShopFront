@@ -17,6 +17,6 @@ export class AdminProductService {
   }
 
   delete(id: number) {
-    return this.http.delete<void>('api/admin/products' + id)
+    return this.http.delete<void>('api/admin/products/' + id)
   }
 }
