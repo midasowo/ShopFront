@@ -24,6 +24,7 @@ export class AdminProductComponent implements AfterViewInit {
   totalElements: number = 0
   data: AdminProduct[] = []
   isLoadingResults = true;
+  confirmMessage = 'Are you sure you want to delete this product?'
 
   constructor(
     private adminProductService: AdminProductService,
@@ -46,7 +47,7 @@ export class AdminProductComponent implements AfterViewInit {
   }
 
   confirmDelete(element: AdminProduct) {
-    this.dialogService.openConfirmDialog()
+    this.dialogService.openConfirmDialog(this.confirmMessage)
       .afterClosed()
       .subscribe(result => {
         if (result)
