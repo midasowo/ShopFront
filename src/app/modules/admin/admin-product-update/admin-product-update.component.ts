@@ -20,6 +20,8 @@ export class AdminProductUpdateComponent implements OnInit {
 
   product!: AdminProductUpdate
   productForm!: FormGroup
+  imageForm!: FormGroup
+  requiredFileTypes = "image/jpeg, image/png"
 
   constructor(
     private router: ActivatedRoute,
@@ -32,12 +34,17 @@ export class AdminProductUpdateComponent implements OnInit {
 
   ngOnInit(): void {
     this.getProduct()
+
     this.productForm = this.formBuilder.group({
       name: ['', [Validators.required, Validators.minLength(3)]],
       description: ['', [Validators.required, Validators.minLength(3)]],
       category: ['', [Validators.required, Validators.minLength(3)]],
       price: ['', [Validators.required, Validators.min(0.01)]],
       currency: ['PLN', Validators.required],
+    })
+
+    this.imageForm = this.formBuilder.group({
+      file: ['']
     })
   }
 
@@ -56,6 +63,18 @@ export class AdminProductUpdateComponent implements OnInit {
           this.snackBar.open("Product updated", 'OK', {duration: 2000})
         },
         error: err => this.adminMessageService.addBackendErrors(err.error)
+      })
+  }
+
+  uploadFile() {
+    let formData = new FormData()
+    formData.append('file', this.imageForm.get('file')?.value)
+  }
+
+  onFileChange(event: any) {
+    if (event.target.files.length > 0)
+      this.imageForm.patchValue({
+        file: event.target.files[0]
       })
   }
 
