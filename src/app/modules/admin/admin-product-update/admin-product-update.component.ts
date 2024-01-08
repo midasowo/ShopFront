@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {CommonModule} from '@angular/common';
+import {CommonModule, NgOptimizedImage} from '@angular/common';
 import {SharedModule} from "../../../shared/shared.module";
 import {ActivatedRoute} from "@angular/router";
 import {AdminProductUpdateService} from "./admin-product-update.service";
@@ -12,7 +12,7 @@ import {AdminMessageService} from "../admin-message.service";
 @Component({
   selector: 'app-admin-product-update',
   standalone: true,
-  imports: [CommonModule, SharedModule, AdminProductFormComponent],
+  imports: [CommonModule, SharedModule, AdminProductFormComponent, NgOptimizedImage],
   templateUrl: './admin-product-update.component.html',
   styleUrl: './admin-product-update.component.scss'
 })
@@ -22,10 +22,11 @@ export class AdminProductUpdateComponent implements OnInit {
   productForm!: FormGroup
   imageForm!: FormGroup
   requiredFileTypes = "image/jpeg, image/png"
+  image: string = ''
 
   constructor(
     private router: ActivatedRoute,
-    private adminProductService: AdminProductUpdateService,
+    private adminProductUpdateService: AdminProductUpdateService,
     private formBuilder: FormBuilder,
     private snackBar: MatSnackBar,
     private adminMessageService: AdminMessageService
@@ -50,13 +51,16 @@ export class AdminProductUpdateComponent implements OnInit {
 
   getProduct() {
     let id = this.getProductId()
-    this.adminProductService.getProduct(id)
+    this.adminProductUpdateService.getProduct(id)
       .subscribe(product => this.mapFormValues(product))
   }
 
   submit() {
     let id = this.getProductId();
-    this.adminProductService.saveProduct(id, this.productForm.value)
+    const formData = this.productForm.getRawValue();
+    formData.image = this.image;
+
+    this.adminProductUpdateService.saveProduct(id, formData)
       .subscribe({
         next: product => {
           this.mapFormValues(product)
@@ -69,6 +73,8 @@ export class AdminProductUpdateComponent implements OnInit {
   uploadFile() {
     let formData = new FormData()
     formData.append('file', this.imageForm.get('file')?.value)
+    this.adminProductUpdateService.uploadImage(formData)
+      .subscribe(result => this.image = result.filename)
   }
 
   onFileChange(event: any) {
@@ -84,8 +90,9 @@ export class AdminProductUpdateComponent implements OnInit {
       description: product.description,
       category: product.category,
       price: product.price,
-      currency: product.currency
+      currency: product.currency,
     });
+    this.image = product.image
   }
 
   private getProductId(): number {
