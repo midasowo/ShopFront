@@ -42,7 +42,6 @@ export class AdminProductUpdateComponent implements OnInit {
       category: ['', [Validators.required, Validators.minLength(3)]],
       price: ['', [Validators.required, Validators.min(0.01)]],
       currency: ['PLN', Validators.required],
-      image: ['']
     })
 
     this.imageForm = this.formBuilder.group({
@@ -92,7 +91,6 @@ export class AdminProductUpdateComponent implements OnInit {
       category: product.category,
       price: product.price,
       currency: product.currency,
-      image: this.image
     });
     this.image = product.image
   }
