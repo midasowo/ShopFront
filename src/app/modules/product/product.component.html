@@ -9,7 +9,10 @@
       <mat-card-header>
         <div flexlayout="row">
           <a routerLink="{{'/products/' + product.slug}}">
-            <img src="assets/image-placeholder.png" alt="" mat-card-lg-image class="product-image">
+            <img *ngIf="!product.image" src="assets/image-placeholder.png" alt="" mat-card-lg-image
+                 class="product-image">
+            <img *ngIf="product.image" src="{{'/api/data/productImages/' + product.image}}" alt="" mat-card-lg-image
+                 class="product-image">
           </a>
           <mat-card-content fxFlex class="product-content">{{ product.description }}</mat-card-content>
         </div>
