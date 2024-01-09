@@ -59,6 +59,12 @@ import {NgIf} from "@angular/common";
         </div>
       </mat-form-field>
 
+      <mat-form-field appearance="fill">
+        <mat-label>Full description</mat-label>
+        <textarea matInput rows="20" placeholder="Add full description of product"
+                  formControlName="fullDescription"></textarea>
+      </mat-form-field>
+
       <mat-form-field>
         <mat-label>Category</mat-label>
         <input matInput placeholder="Enter the product category" formControlName="category">
@@ -118,6 +124,10 @@ export class AdminProductFormComponent {
 
   get description() {
     return this.parentForm.get("description")
+  }
+
+  get fullDescription() {
+    return this.parentForm.get("fullDescription")
   }
 
   get category() {

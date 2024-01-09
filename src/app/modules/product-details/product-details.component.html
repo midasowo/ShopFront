@@ -1,5 +1,5 @@
-<div fxLayout="column">
-  <div *ngIf="product" fxLayout="row" fxFlex fxLayoutGap="20">
+<div *ngIf="product" fxLayout="column">
+  <div fxLayout="row" fxFlex fxLayoutGap="20">
     <div>
       <img *ngIf="!product.image" src="/assets/image-placeholder.png" width="350" alt="">
       <img *ngIf="product.image" src="{{'/api/data/productImages/' + product.image}}" width="350" alt="">
@@ -15,5 +15,8 @@
       </div>
       <button mat-flat-button color="warn">Add to card</button>
     </div>
+  </div>
+  <div class="fullDescription">
+    {{product.fullDescription}}
   </div>
 </div>
