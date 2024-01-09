@@ -5,11 +5,12 @@ import {ProductService} from "./product.service";
 import {Product} from "./model/product";
 import {Page} from "../../shared/model/page";
 import {PageEvent} from "@angular/material/paginator";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-product',
   standalone: true,
-  imports: [CommonModule, SharedModule],
+  imports: [CommonModule, SharedModule, RouterLink],
   templateUrl: './product.component.html',
   styleUrl: './product.component.scss'
 })

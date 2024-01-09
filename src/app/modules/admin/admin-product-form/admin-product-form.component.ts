@@ -33,6 +33,19 @@ import {NgIf} from "@angular/common";
       </mat-form-field>
 
       <mat-form-field>
+        <mat-label>Friendly url</mat-label>
+        <input matInput placeholder="Enter url" formControlName="slug">
+        <div *ngIf="slug?.invalid && (slug?.dirty || slug?.touched)" class="error-messages">
+          <div *ngIf="slug?.errors?.['required']">
+            Slug is required
+          </div>
+          <div *ngIf="slug?.errors?.['minlength']">
+            Slug must be at least 3 characters long
+          </div>
+        </div>
+      </mat-form-field>
+
+      <mat-form-field>
         <mat-label>Description</mat-label>
         <textarea matInput rows="10" placeholder="Enter the product description"
                   formControlName="description"></textarea>
@@ -117,6 +130,10 @@ export class AdminProductFormComponent {
 
   get currency() {
     return this.parentForm.get("currency")
+  }
+
+  get slug() {
+    return this.parentForm.get("slug")
   }
 
 }
