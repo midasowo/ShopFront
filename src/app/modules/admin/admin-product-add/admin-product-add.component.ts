@@ -39,7 +39,7 @@ export class AdminProductAddComponent implements OnInit {
       name: ['', [Validators.required, Validators.minLength(3)]],
       description: ['', [Validators.required, Validators.minLength(3)]],
       fullDescription: [''],
-      category: ['', [Validators.required, Validators.minLength(3)]],
+      categoryId: ['', [Validators.required]],
       price: ['', [Validators.required, Validators.min(0.01)]],
       currency: ['PLN', Validators.required],
       slug: ['', [Validators.required, Validators.minLength(3)]],
@@ -56,7 +56,7 @@ export class AdminProductAddComponent implements OnInit {
         description: this.productForm.get('description')?.value,
         fullDescription:
         this.productForm.get('fullDescription')?.value,
-        category: this.productForm.get('category')?.value,
+        categoryId: this.productForm.get('categoryId')?.value,
         price: this.productForm.get('price')?.value,
         currency: this.productForm.get('currency')?.value,
         slug: this.productForm.get('slug')?.value,

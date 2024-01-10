@@ -1,10 +1,13 @@
-import {Component, Input} from "@angular/core";
+import {Component, Input, OnInit} from "@angular/core";
 import {FlexModule} from "@angular/flex-layout";
 import {MatButtonModule} from "@angular/material/button";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {FormGroup, ReactiveFormsModule} from "@angular/forms";
-import {NgIf} from "@angular/common";
+import {NgForOf, NgIf} from "@angular/common";
+import {SharedModule} from "../../../shared/shared.module";
+import {AdminCategoryNameDto} from "./admin-category-name-dto";
+import {FormCategoryService} from "./form-category.service";
 
 @Component({
   selector: 'app-admin-product-form',
@@ -15,7 +18,9 @@ import {NgIf} from "@angular/common";
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
-    NgIf
+    NgIf,
+    SharedModule,
+    NgForOf
   ],
   template: `
     <div [formGroup]="parentForm" fxLayout="column">
@@ -67,13 +72,14 @@ import {NgIf} from "@angular/common";
 
       <mat-form-field>
         <mat-label>Category</mat-label>
-        <input matInput placeholder="Enter the product category" formControlName="category">
-        <div *ngIf="category?.invalid && (category?.dirty || category?.touched)" class="error-messages">
-          <div *ngIf="category?.errors?.['required']">
+        <mat-select formControlName="categoryId">
+          <mat-option *ngFor="let el of categories" [value]="el.id">
+            {{el.name}}
+          </mat-option>
+        </mat-select>
+        <div *ngIf="categoryId?.invalid && (categoryId?.dirty || categoryId?.touched)" class="error-messages">
+          <div *ngIf="categoryId?.errors?.['required']">
             Category is required
-          </div>
-          <div *ngIf="category?.errors?.['minlength']">
-            Category must be at least 3 characters long
           </div>
         </div>
       </mat-form-field>
@@ -114,9 +120,22 @@ import {NgIf} from "@angular/common";
     }
   `]
 })
-export class AdminProductFormComponent {
+export class AdminProductFormComponent implements OnInit {
 
   @Input() parentForm!: FormGroup;
+  categories: Array<AdminCategoryNameDto> = [];
+
+  constructor(private formCategoryService: FormCategoryService) {
+  }
+
+  ngOnInit(): void {
+    this.getCategories()
+  }
+
+  getCategories() {
+    this.formCategoryService.getCategories()
+      .subscribe(categories => this.categories = categories)
+  }
 
   get name() {
     return this.parentForm.get("name")
@@ -130,8 +149,8 @@ export class AdminProductFormComponent {
     return this.parentForm.get("fullDescription")
   }
 
-  get category() {
-    return this.parentForm.get("category")
+  get categoryId() {
+    return this.parentForm.get("categoryId")
   }
 
   get price() {

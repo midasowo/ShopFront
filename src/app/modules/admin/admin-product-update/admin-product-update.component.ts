@@ -40,7 +40,7 @@ export class AdminProductUpdateComponent implements OnInit {
       name: ['', [Validators.required, Validators.minLength(3)]],
       description: ['', [Validators.required, Validators.minLength(3)]],
       fullDescription: [''],
-      category: ['', [Validators.required, Validators.minLength(3)]],
+      categoryId: ['', [Validators.required]],
       price: ['', [Validators.required, Validators.min(0.01)]],
       currency: ['PLN', Validators.required],
       slug: ['', [Validators.required, Validators.minLength(3)]],
@@ -91,7 +91,7 @@ export class AdminProductUpdateComponent implements OnInit {
       name: product.name,
       description: product.description,
       fullDescription: product.fullDescription,
-      category: product.category,
+      categoryId: product.categoryId,
       price: product.price,
       currency: product.currency,
       slug: product.slug
