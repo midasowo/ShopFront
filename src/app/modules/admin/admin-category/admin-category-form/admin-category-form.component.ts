@@ -5,12 +5,10 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {FormGroup, ReactiveFormsModule} from "@angular/forms";
 import {NgForOf, NgIf} from "@angular/common";
-import {SharedModule} from "../../../shared/shared.module";
-import {AdminCategoryNameDto} from "../common/dto/admin-category-name-dto";
-import {FormCategoryService} from "./form-category.service";
+import {SharedModule} from "src/app/shared/shared.module";
 
 @Component({
-  selector: 'app-admin-product-form',
+  selector: 'app-admin-category-form',
   standalone: true,
   imports: [
     FlexModule,
@@ -64,49 +62,6 @@ import {FormCategoryService} from "./form-category.service";
         </div>
       </mat-form-field>
 
-      <mat-form-field appearance="fill">
-        <mat-label>Full description</mat-label>
-        <textarea matInput rows="20" placeholder="Add full description of product"
-                  formControlName="fullDescription"></textarea>
-      </mat-form-field>
-
-      <mat-form-field>
-        <mat-label>Category</mat-label>
-        <mat-select formControlName="categoryId">
-          <mat-option *ngFor="let el of categories" [value]="el.id">
-            {{el.name}}
-          </mat-option>
-        </mat-select>
-        <div *ngIf="categoryId?.invalid && (categoryId?.dirty || categoryId?.touched)" class="error-messages">
-          <div *ngIf="categoryId?.errors?.['required']">
-            Category is required
-          </div>
-        </div>
-      </mat-form-field>
-
-      <mat-form-field>
-        <mat-label>Price</mat-label>
-        <input matInput placeholder="Enter the product price" formControlName="price">
-        <div *ngIf="price?.invalid && (price?.dirty || price?.touched)" class="error-messages">
-          <div *ngIf="price?.errors?.['required']">
-            Price is required
-          </div>
-          <div *ngIf="price?.errors?.['min']">
-            Price must be at least 0.01
-          </div>
-        </div>
-      </mat-form-field>
-
-      <mat-form-field>
-        <mat-label>Currency</mat-label>
-        <input matInput placeholder="Enter the product currency" formControlName="currency">
-        <div *ngIf="currency?.invalid && (currency?.dirty || currency?.touched)" class="error-messages">
-          <div *ngIf="currency?.errors?.['required']">
-            Currency is required
-          </div>
-        </div>
-      </mat-form-field>
-
       <div fxLayoutAlign="end">
         <button mat-flat-button color="primary" [disabled]="!parentForm.valid">Save</button>
       </div>
@@ -120,21 +75,14 @@ import {FormCategoryService} from "./form-category.service";
     }
   `]
 })
-export class AdminProductFormComponent implements OnInit {
+export class AdminCategoryFormComponent implements OnInit {
 
   @Input() parentForm!: FormGroup;
-  categories: Array<AdminCategoryNameDto> = [];
 
-  constructor(private formCategoryService: FormCategoryService) {
+  constructor() {
   }
 
   ngOnInit(): void {
-    this.getCategories()
-  }
-
-  getCategories() {
-    this.formCategoryService.getCategories()
-      .subscribe(categories => this.categories = categories)
   }
 
   get name() {
@@ -143,22 +91,6 @@ export class AdminProductFormComponent implements OnInit {
 
   get description() {
     return this.parentForm.get("description")
-  }
-
-  get fullDescription() {
-    return this.parentForm.get("fullDescription")
-  }
-
-  get categoryId() {
-    return this.parentForm.get("categoryId")
-  }
-
-  get price() {
-    return this.parentForm.get("price")
-  }
-
-  get currency() {
-    return this.parentForm.get("currency")
   }
 
   get slug() {

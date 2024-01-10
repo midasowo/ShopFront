@@ -6,6 +6,10 @@ table {
   width: 60px;
 }
 
+.mat-column-actions {
+  width: 140px;
+}
+
 .container {
   position: relative;
 }
@@ -20,12 +24,3 @@ table {
   align-items: center;
   justify-content: center;
 }
-
-.mat-column-actions {
-  width: 140px;
-}
-
-.mat-column-image {
-  width: 155px;
-}
-
