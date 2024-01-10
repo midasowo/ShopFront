@@ -18,6 +18,7 @@ import {
 import {
   AdminCategoryUpdateComponent
 } from "./modules/admin/admin-category/admin-category-update/admin-category-update.component";
+import {CategoryComponent} from "./modules/category/category.component";
 
 const routes: Routes = [
   {
@@ -26,7 +27,8 @@ const routes: Routes = [
     children: [
       {path: '', component: HomeComponent},
       {path: 'products', component: ProductComponent},
-      {path: 'products/:slug', component: ProductDetailsComponent}
+      {path: 'products/:slug', component: ProductDetailsComponent},
+      {path: 'categories/:slug', component: CategoryComponent}
     ]
   },
   {
