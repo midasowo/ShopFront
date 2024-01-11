@@ -1,1 +1,32 @@
-<p>category works!</p>
+<h1>Category: {{categoryName}}</h1>
+<p>Description: {{categoryDescription}}</p>
+<mat-card *ngFor="let product of category?.product">
+  <div flexlayout="row">
+    <div flexlayout="column" fxFlex>
+      <mat-card-header>
+        <mat-card-title><a routerLink="{{'/products/' + product.slug}}"> {{ product.name }}</a></mat-card-title>
+        <mat-card-subtitle>{{ product.category }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-header>
+        <div flexlayout="row">
+          <a routerLink="{{'/products/' + product.slug}}">
+            <img *ngIf="!product.image" src="assets/image-placeholder.png" alt="" mat-card-lg-image
+                 class="product-image">
+            <img *ngIf="product.image" src="{{'/api/data/productImages/' + product.image}}" alt="" mat-card-lg-image
+                 class="product-image">
+          </a>
+          <mat-card-content fxFlex class="product-content">{{ product.description }}</mat-card-content>
+        </div>
+      </mat-card-header>
+    </div>
+    <div>
+      <mat-card-header>
+        <div class="product-price">{{ product.price }} {{ product.currency }}</div>
+      </mat-card-header>
+    </div>
+  </div>
+  <mat-card-actions align="end" fxLayoutGap="10">
+    <button mat-flat-button color="accent" routerLink="{{'/products/' + product.slug}}">Show</button>
+    <button mat-flat-button color="primary">Add to cart</button>
+  </mat-card-actions>
+</mat-card>
