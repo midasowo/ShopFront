@@ -1,8 +1,10 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule} from "@angular/router";
 import {MaterialModule} from "../../material.module";
 import {FlexModule} from "@angular/flex-layout";
+import {SidebarService} from "./sidebar.service";
+import {SidebarCategory} from "./model/sidebar-category";
 
 @Component({
   selector: 'app-sidebar',
@@ -11,14 +13,19 @@ import {FlexModule} from "@angular/flex-layout";
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss'
 })
-export class SidebarComponent {
+export class SidebarComponent implements OnInit {
 
-  categories = [
-    'Kategoria 1',
-    'Kategoria 2',
-    'Kategoria 3',
-    'Kategoria 4',
-    'Kategoria 5'
-  ]
+  categories: Array<SidebarCategory> = []
 
+  constructor(private sidebarService: SidebarService) {
+  }
+
+  ngOnInit(): void {
+    this.getCategories()
+  }
+
+  private getCategories() {
+    this.sidebarService.getCategories()
+      .subscribe(categories => this.categories = categories)
+  }
 }

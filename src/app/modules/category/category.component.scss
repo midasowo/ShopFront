@@ -1,0 +1,34 @@
+@import "../../../variables";
+
+:host {
+  display: flex;
+  flex-direction: column;
+}
+
+.product-image {
+  margin-right: 10px;
+}
+
+.product-price {
+  font-size: 30px;
+  font-weight: 500;
+  margin-top: 20px;
+  color: $warn;
+}
+
+.product-content {
+  font-size: 18px;
+}
+
+mat-card {
+  margin-bottom: 20px;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a:hover {
+  color: #777;
+}
