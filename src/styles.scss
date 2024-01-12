@@ -12,3 +12,8 @@ html {
   padding: 20px;
   background: $lightgray;
 }
+
+.snack-bar-bg-color-ok {
+  --mdc-snackbar-container-color: green;
+  --mat-mdc-snack-bar-button-color: white;
+}
