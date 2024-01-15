@@ -5,8 +5,8 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {FormGroup, ReactiveFormsModule} from "@angular/forms";
 import {NgForOf, NgIf} from "@angular/common";
-import {SharedModule} from "../../../shared/shared.module";
-import {AdminCategoryNameDto} from "../common/dto/admin-category-name-dto";
+import {SharedModule} from "../../../../shared/shared.module";
+import {AdminCategoryNameDto} from "../../common/dto/admin-category-name-dto";
 import {FormCategoryService} from "./form-category.service";
 
 @Component({

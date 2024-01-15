@@ -1,6 +1,6 @@
 import {Component, Inject} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {SharedModule} from "../../../shared/shared.module";
+import {SharedModule} from "../../../../../shared/shared.module";
 import {MAT_DIALOG_DATA} from "@angular/material/dialog";
 
 @Component({

@@ -1,13 +1,14 @@
 import {Component, OnInit} from '@angular/core';
 import {CommonModule, NgOptimizedImage} from '@angular/common';
-import {SharedModule} from "../../../shared/shared.module";
+import {SharedModule} from "../../../../shared/shared.module";
 import {ActivatedRoute} from "@angular/router";
-import {AdminProductUpdateService} from "./admin-product-update.service";
-import {AdminProductUpdate} from "./model/admin-product-update";
+import {AdminProductUpdate} from "../model/admin-product-update";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {AdminProductFormComponent} from "../admin-product-form/admin-product-form.component";
-import {AdminMessageService} from "../admin-message.service";
+import {AdminMessageService} from "../../common/service/admin-message.service";
+import {AdminProductImageService} from "../admin-product-image.service";
+import {AdminProductUpdateService} from "./admin-product-update.service";
 
 @Component({
   selector: 'app-admin-product-update',
@@ -29,7 +30,8 @@ export class AdminProductUpdateComponent implements OnInit {
     private adminProductUpdateService: AdminProductUpdateService,
     private formBuilder: FormBuilder,
     private snackBar: MatSnackBar,
-    private adminMessageService: AdminMessageService
+    private adminMessageService: AdminMessageService,
+    private adminProductImageService: AdminProductImageService,
   ) {
   }
 
@@ -75,7 +77,7 @@ export class AdminProductUpdateComponent implements OnInit {
   uploadFile() {
     let formData = new FormData()
     formData.append('file', this.imageForm.get('file')?.value)
-    this.adminProductUpdateService.uploadImage(formData)
+    this.adminProductImageService.uploadImage(formData)
       .subscribe(result => this.image = result.filename)
   }
 
