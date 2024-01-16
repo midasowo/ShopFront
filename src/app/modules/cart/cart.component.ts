@@ -7,6 +7,7 @@ import {CartSummary} from "./model/cart-summary";
 import {CookieService} from "ngx-cookie-service";
 import {FormArray, FormBuilder, FormGroup} from "@angular/forms";
 import {CartSummaryItem} from "./model/cart-summary-item";
+import {CartIconService} from "../../shared/common/service/cart-icon.service";
 
 @Component({
   selector: 'app-cart',
@@ -25,7 +26,8 @@ export class CartComponent implements OnInit {
     private cartService: CartService,
     private cookieService: CookieService,
     private router: Router,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private cartIconService: CartIconService
   ) {
   }
 
@@ -48,6 +50,7 @@ export class CartComponent implements OnInit {
         .subscribe(summary => {
           this.summary = summary
           this.patchFormItems()
+          this.cartIconService.cartChanged(summary.items.length)
         })
     }
 
@@ -59,6 +62,7 @@ export class CartComponent implements OnInit {
       .subscribe(summary => {
         this.summary = summary
         this.patchFormItems()
+        this.cartIconService.cartChanged(summary.items.length)
         this.cookieService.delete("cartId")
         this.cookieService.set("cartId", summary.id.toString(), this.expiresDays(3))
         this.router.navigate(["/cart"])
