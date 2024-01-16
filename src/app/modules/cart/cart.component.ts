@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {CommonModule} from '@angular/common';
+import {CommonModule, Location} from '@angular/common';
 import {SharedModule} from "../../shared/shared.module";
 import {ActivatedRoute, Router, RouterLink} from "@angular/router";
 import {CartService} from "./cart.service";
@@ -18,8 +18,9 @@ import {CartIconService} from "../../shared/common/service/cart-icon.service";
 })
 export class CartComponent implements OnInit {
 
-  summary!: CartSummary;
+  summary!: CartSummary
   formGroup!: FormGroup
+  private isProductAdded = false
 
   constructor(
     private route: ActivatedRoute,
@@ -27,7 +28,8 @@ export class CartComponent implements OnInit {
     private cookieService: CookieService,
     private router: Router,
     private formBuilder: FormBuilder,
-    private cartIconService: CartIconService
+    private cartIconService: CartIconService,
+    private location: Location
   ) {
   }
 
@@ -35,8 +37,10 @@ export class CartComponent implements OnInit {
     let id = Number(this.route.snapshot.queryParams['productId'])
     if (id > 0) {
       this.addToCart(id)
+      this.isProductAdded = true;
     } else {
       this.getCart()
+      this.isProductAdded = false;
     }
     this.formGroup = this.formBuilder.group({
       items: this.formBuilder.array([])
@@ -78,8 +82,8 @@ export class CartComponent implements OnInit {
       })
   }
 
-  private expiresDays(days: number): Date {
-    return new Date(Date.now() + days * 24 * 60 * 60 * 1000)
+  back() {
+    this.location.historyGo(this.isProductAdded ? -2 : -1);
   }
 
   patchFormItems() {
@@ -101,6 +105,10 @@ export class CartComponent implements OnInit {
 
   get items() {
     return (<FormArray>this.formGroup.get("items")).controls
+  }
+
+  private expiresDays(days: number): Date {
+    return new Date(Date.now() + days * 24 * 60 * 60 * 1000)
   }
 
   private mapToRequestListDto(): any[] {

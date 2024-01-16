@@ -38,6 +38,9 @@
       <div class="summary"> Value:</div>
       <div class="summary"><b>{{summary.summary.grossValue}}</b></div>
     </div>
+    <div>
+      <button mat-flat-button color="primary" (click)="back()">Back</button>
+    </div>
   </div>
 </form>
 <div *ngIf="!summary?.items?.length">
