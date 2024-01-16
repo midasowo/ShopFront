@@ -51,8 +51,8 @@ export class ProductDetailsComponent implements OnInit {
       } as Review)
         .subscribe(() => {
           this.reviewForm.reset()
-          this.snackBar.open("Thank you for adding review!", '', {
-            duration: 2000,
+          this.snackBar.open("Thank you for adding your opinion. It will be displayed after acceptance.", '', {
+            duration: 3000,
             panelClass: "snack-bar-bg-color-ok"
           })
         })
