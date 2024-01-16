@@ -4,10 +4,12 @@
     <span class="logo">{{title}}</span>
   </div>
   <div fxLayoutGap="15" fxLayoutAlign="start center">
-    <button mat-flat-button routerLink="">Strona główna</button>
-    <button mat-flat-button routerLink="/products">Produtky</button>
+    <button mat-flat-button routerLink="">Main page</button>
+    <button mat-flat-button routerLink="/products">Products</button>
     <span></span>
-    <button mat-flat-button routerLink="/login">Zaloguj</button>
-    <mat-icon color="accent" class="shopping-basket">shopping_basket</mat-icon>
+    <button mat-flat-button routerLink="/login">Log in</button>
+    <a routerLink="/cart">
+      <mat-icon color="accent" class="shopping-basket">shopping_basket</mat-icon>
+    </a>
   </div>
 </header>

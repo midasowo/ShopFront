@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 import {SharedModule} from "../../shared/shared.module";
 import {ProductDetails} from "./model/product-details";
 import {ProductDetailsService} from "./product-details.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, RouterLink} from "@angular/router";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Review} from "./model/Review";
 import {MatSnackBar} from "@angular/material/snack-bar";
@@ -11,7 +11,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 @Component({
   selector: 'app-product-details',
   standalone: true,
-  imports: [CommonModule, SharedModule],
+  imports: [CommonModule, SharedModule, RouterLink],
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.scss'
 })
