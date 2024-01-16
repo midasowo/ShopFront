@@ -4,9 +4,9 @@ import {SharedModule} from "../../../shared/shared.module";
 import {AdminProductService} from "./admin-product.service";
 import {MatPaginator} from "@angular/material/paginator";
 import {startWith, switchMap} from "rxjs";
-import {AdminProduct} from "./admin-product";
+import {AdminProduct} from "./model/admin-product";
 import {RouterLink} from "@angular/router";
-import {AdminConfirmDialogService} from "../admin-confirm-dialog.service";
+import {AdminConfirmDialogService} from "../common/service/admin-confirm-dialog.service";
 import {MatTable} from "@angular/material/table";
 
 @Component({

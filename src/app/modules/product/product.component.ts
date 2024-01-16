@@ -2,8 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {SharedModule} from "../../shared/shared.module";
 import {ProductService} from "./product.service";
-import {Product} from "./model/product";
-import {Page} from "../../shared/model/page";
+import {Product} from "../common/model/product";
+import {Page} from "../common/model/page";
 import {PageEvent} from "@angular/material/paginator";
 import {RouterLink} from "@angular/router";
 

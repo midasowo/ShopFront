@@ -8,7 +8,7 @@ import {MatTable, MatTableModule} from "@angular/material/table";
 import {RouterLink} from "@angular/router";
 import {AdminCategoryNameDto} from "../common/dto/admin-category-name-dto";
 import {AdminCategoryService} from "./admin-category.service";
-import {AdminConfirmDialogService} from "../admin-confirm-dialog.service";
+import {AdminConfirmDialogService} from "../common/service/admin-confirm-dialog.service";
 
 @Component({
   selector: 'app-admin-category',

@@ -8,8 +8,10 @@ import {LoginComponent} from "./modules/login/login.component";
 import {FullPageAdminComponent} from "./layouts/fullpageadmin/full-page-admin.component";
 import {AdminComponent} from "./modules/admin/admin.component";
 import {AdminProductComponent} from "./modules/admin/admin-product/admin-product.component";
-import {AdminProductUpdateComponent} from "./modules/admin/admin-product-update/admin-product-update.component";
-import {AdminProductAddComponent} from "./modules/admin/admin-product-add/admin-product-add.component";
+import {
+  AdminProductUpdateComponent
+} from "./modules/admin/admin-product/admin-product-update/admin-product-update.component";
+import {AdminProductAddComponent} from "./modules/admin/admin-product/admin-product-add/admin-product-add.component";
 import {ProductDetailsComponent} from "./modules/product-details/product-details.component";
 import {AdminCategoryComponent} from "./modules/admin/admin-category/admin-category.component";
 import {
@@ -19,6 +21,8 @@ import {
   AdminCategoryUpdateComponent
 } from "./modules/admin/admin-category/admin-category-update/admin-category-update.component";
 import {CategoryComponent} from "./modules/category/category.component";
+import {AdminReviewComponent} from "./modules/admin/admin-review/admin-review.component";
+import {CartComponent} from "./modules/cart/cart.component";
 
 const routes: Routes = [
   {
@@ -28,7 +32,8 @@ const routes: Routes = [
       {path: '', component: HomeComponent},
       {path: 'products', component: ProductComponent},
       {path: 'products/:slug', component: ProductDetailsComponent},
-      {path: 'categories/:slug', component: CategoryComponent}
+      {path: 'categories/:slug', component: CategoryComponent},
+      {path: 'cart', component: CartComponent}
     ]
   },
   {
@@ -48,7 +53,8 @@ const routes: Routes = [
       {path: 'admin/products/add', component: AdminProductAddComponent},
       {path: 'admin/categories', component: AdminCategoryComponent},
       {path: 'admin/categories/add', component: AdminCategoryAddComponent},
-      {path: 'admin/categories/update/:id', component: AdminCategoryUpdateComponent}
+      {path: 'admin/categories/update/:id', component: AdminCategoryUpdateComponent},
+      {path: 'admin/reviews', component: AdminReviewComponent},
     ]
   }
 ];

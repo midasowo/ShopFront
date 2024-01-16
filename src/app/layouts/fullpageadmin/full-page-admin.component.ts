@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterLink, RouterOutlet} from "@angular/router";
 import {SharedModule} from "../../shared/shared.module";
-import {AdminMessageComponent} from "../../modules/admin/admin-message/admin-message.component";
+import {AdminMessageComponent} from "../../modules/admin/common/component/admin-message/admin-message.component";
 
 @Component({
   selector: 'app-full-page-admin',

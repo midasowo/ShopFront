@@ -7,7 +7,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AdminCategoryService} from "../admin-category.service";
 import {ActivatedRoute} from "@angular/router";
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {AdminMessageService} from "../../admin-message.service";
+import {AdminMessageService} from "../../common/service/admin-message.service";
 import {AdminCategory} from "../model/admin-category";
 
 @Component({

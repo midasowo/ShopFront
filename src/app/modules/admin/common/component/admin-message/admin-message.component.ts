@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {SharedModule} from "../../../shared/shared.module";
-import {AdminMessageService} from "../admin-message.service";
+import {SharedModule} from "../../../../../shared/shared.module";
+import {AdminMessageService} from "../../service/admin-message.service";
 
 @Component({
   selector: 'app-admin-message',
