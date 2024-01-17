@@ -35,8 +35,15 @@
       <button mat-flat-button color="warn" (click)="submit()">Update cart</button>
     </div>
     <div fxLayoutAlign="end start">
-      <div class="summary"> Value:</div>
+      <div class="summary">Total value:</div>
       <div class="summary"><b>{{summary.summary.grossValue}}</b></div>
+    </div>
+    <div>
+      <button mat-flat-button color="primary" (click)="back()">Back to shopping</button>
+    </div>
+    <div fxLayoutAlign="end start">
+      <button type="button" class="orderButton" mat-flat-button color="accent" routerLink="/order">Order
+      </button>
     </div>
   </div>
 </form>
