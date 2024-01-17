@@ -3,10 +3,10 @@ import {CommonModule, Location} from '@angular/common';
 import {SharedModule} from "../../shared/shared.module";
 import {ActivatedRoute, Router, RouterLink} from "@angular/router";
 import {CartService} from "./cart.service";
-import {CartSummary} from "./model/cart-summary";
+import {CartSummary} from "../common/model/cart/cart-summary";
 import {CookieService} from "ngx-cookie-service";
 import {FormArray, FormBuilder, FormGroup} from "@angular/forms";
-import {CartSummaryItem} from "./model/cart-summary-item";
+import {CartSummaryItem} from "../common/model/cart/cart-summary-item";
 import {CartIconService} from "../../shared/common/service/cart-icon.service";
 
 @Component({
