@@ -64,11 +64,11 @@
 }
 
 .shipmentRadioButton {
-  margin: 15px 0;
+  margin: 5px 0;
   font-size: 18px;
 }
 
-.shipment-2 {
+.shipment-price {
   margin-left: 10px;
   font-weight: bolder;
 }
@@ -83,5 +83,13 @@
 
 .orderTotalValue {
   font-size: 24px;
+  font-weight: 700;
+}
+
+.radio-group {
+  margin-bottom: 20px;
+}
+
+.paymentNote {
   font-weight: 700;
 }
