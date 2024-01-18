@@ -22,6 +22,10 @@ export class OrderComponent implements OnInit {
   formGroup!: FormGroup
   orderSummary!: OrderSummary
 
+  private statuses = new Map<string, string>([
+    ["NEW", "New"]
+  ])
+
   constructor(
     private cookieService: CookieService,
     private orderService: OrderService,
@@ -65,6 +69,10 @@ export class OrderComponent implements OnInit {
           this.cookieService.delete("cartId")
         })
     }
+  }
+
+  getStatus(status: string) {
+    return this.statuses.get(status)
   }
 
   get firstname() {
