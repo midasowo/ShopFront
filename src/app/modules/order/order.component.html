@@ -106,8 +106,23 @@
             </div>
           </div>
           <div fxLayoutAlign="end start">
-            <div class="summary"> Total value:</div>
+            <div class="summary">Value:</div>
             <div class="summary"><b>{{cartSummary.summary.grossValue}}</b></div>
+          </div>
+          <div>
+            <h2>Delivery: </h2>
+            <mat-radio-group fxLayout="column" formControlName="shipment">
+              <mat-radio-button class="shipmentRadioButton" *ngFor="let shipment of initData?.shipments"
+                                [value]="shipment" [checked]="shipment.defaultShipment">
+                <span class="shipment-1">{{shipment.name}}</span>
+                <span class="shipment-2">{{shipment.price}} PLN</span>
+              </mat-radio-button>
+            </mat-radio-group>
+          </div>
+        </div>
+        <div fxLayoutAlign="end">
+          <div class="orderTotal">Total value to pay:
+            <span class="orderTotalValue"> {{cartSummary.summary.grossValue + getShipmentPrice()}} PLN</span>
           </div>
         </div>
         <div fxLayoutAlign="end start">

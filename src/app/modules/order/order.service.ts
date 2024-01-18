@@ -5,6 +5,7 @@ import {CartSummary} from "../common/model/cart/cart-summary";
 import {HttpClient} from "@angular/common/http";
 import {OrderSummary} from "./model/order-summary";
 import {OrderDto} from "./model/order-dto";
+import {InitData} from "./model/init-data";
 
 @Injectable({
   providedIn: 'root'
@@ -23,5 +24,9 @@ export class OrderService {
 
   placeOrder(order: OrderDto): Observable<OrderSummary> {
     return this.http.post<OrderSummary>("/api/orders", order)
+  }
+
+  getInitData(): Observable<InitData> {
+    return this.http.get<InitData>("/api/orders/initData")
   }
 }
