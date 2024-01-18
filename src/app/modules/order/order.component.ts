@@ -8,11 +8,13 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {RouterLink} from "@angular/router";
 import {OrderDto} from "./model/order-dto";
 import {OrderSummary} from "./model/order-summary";
+import {InitData} from "./model/init-data";
+import {DefaultModule} from "../../layouts/default/default.module";
 
 @Component({
   selector: 'app-order',
   standalone: true,
-  imports: [CommonModule, SharedModule, RouterLink],
+  imports: [CommonModule, SharedModule, RouterLink, DefaultModule],
   templateUrl: './order.component.html',
   styleUrl: './order.component.scss'
 })
@@ -21,6 +23,11 @@ export class OrderComponent implements OnInit {
   cartSummary!: CartSummary
   formGroup!: FormGroup
   orderSummary!: OrderSummary
+  initData!: InitData
+
+  private statuses = new Map<string, string>([
+    ["NEW", "New"]
+  ])
 
   constructor(
     private cookieService: CookieService,
@@ -39,7 +46,10 @@ export class OrderComponent implements OnInit {
       city: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       phone: ['', Validators.required],
+      shipment: ['', Validators.required],
+      payment: ['', Validators.required],
     })
+    this.getInitData()
   }
 
   checkCartEmpty() {
@@ -58,13 +68,32 @@ export class OrderComponent implements OnInit {
         city: this.formGroup.get('city')?.value,
         email: this.formGroup.get('email')?.value,
         phone: this.formGroup.get('phone')?.value,
-        cartId: Number(this.cookieService.get("cartId"))
+        cartId: Number(this.cookieService.get("cartId")),
+        shipmentId: Number(this.formGroup.get('shipment')?.value.id),
+        paymentId: Number(this.formGroup.get('payment')?.value.id)
       } as OrderDto)
         .subscribe(orderSummary => {
           this.orderSummary = orderSummary
           this.cookieService.delete("cartId")
         })
     }
+  }
+
+  getInitData() {
+    this.orderService.getInitData()
+      .subscribe(initData => {
+        this.initData = initData
+        this.setDefaultShipment()
+        this.setDefaultPayment()
+      })
+  }
+
+  getShipmentPrice() {
+    return this.formGroup.get("shipment")?.value?.price
+  }
+
+  getStatus(status: string) {
+    return this.statuses.get(status)
   }
 
   get firstname() {
@@ -95,4 +124,29 @@ export class OrderComponent implements OnInit {
     return this.formGroup.get("phone")
   }
 
+  get shipment() {
+    return this.formGroup.get("shipment")
+  }
+
+  get payment() {
+    return this.formGroup.get("payment")
+  }
+
+  private setDefaultShipment() {
+    const defaultShipment = this.initData.shipments.find(shipment => shipment.defaultShipment);
+    if (defaultShipment) {
+      this.formGroup.patchValue({
+        "shipment": defaultShipment
+      });
+    }
+  }
+
+  private setDefaultPayment() {
+    const defaultPayment = this.initData.payments.find(payment => payment.defaultPayment);
+    if (defaultPayment) {
+      this.formGroup.patchValue({
+        "payment": defaultPayment
+      });
+    }
+  }
 }
