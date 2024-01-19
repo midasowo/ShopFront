@@ -10,6 +10,7 @@ import {OrderDto} from "./model/order-dto";
 import {OrderSummary} from "./model/order-summary";
 import {InitData} from "./model/init-data";
 import {DefaultModule} from "../../layouts/default/default.module";
+import {CartIconService} from "../../shared/common/service/cart-icon.service";
 
 @Component({
   selector: 'app-order',
@@ -33,7 +34,8 @@ export class OrderComponent implements OnInit {
   constructor(
     private cookieService: CookieService,
     private orderService: OrderService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private cartIconService: CartIconService
   ) {
   }
 
@@ -78,6 +80,7 @@ export class OrderComponent implements OnInit {
             this.orderSummary = orderSummary
             this.cookieService.delete("cartId")
             this.errorMessage = false
+            this.cartIconService.cartChanged(0)
           },
           error: err => this.errorMessage = true
         })
