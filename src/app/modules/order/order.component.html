@@ -117,7 +117,7 @@
               <mat-radio-button class="shipmentRadioButton" *ngFor="let shipment of initData?.shipments"
                                 [value]="shipment" [checked]="shipment.defaultShipment">
                 <span class="shipment-name">{{shipment.name}}</span>
-                <span class="shipmsent-price">{{shipment.price}} PLN</span>
+                <span class="shipment-price">{{shipment.price}} PLN</span>
               </mat-radio-button>
             </mat-radio-group>
           </div>
@@ -134,6 +134,9 @@
           <div class="orderTotal">Total value to pay:
             <span class="orderTotalValue"> {{cartSummary.summary.grossValue + getShipmentPrice()}} PLN</span>
           </div>
+        </div>
+        <div *ngIf="errorMessage" class="errorMessage" fxLayoutAlign="end start">
+          Something went wrong. Try again later.
         </div>
         <div fxLayoutAlign="end start">
           <button mat-flat-button color="accent" class="orderButton" [disabled]="!formGroup.valid">Order and pay
