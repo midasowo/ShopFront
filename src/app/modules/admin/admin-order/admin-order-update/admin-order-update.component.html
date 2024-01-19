@@ -1,24 +1,24 @@
-<h1>Edycja zamówienia </h1>
+<h1>Order editing </h1>
 <div>
-  <h2>Dane zamówienia</h2>
-  Numer zamówienia: {{order.id}}
+  <h2>Order details</h2>
+  Order number: {{order.id}}
   <br/><br/>
-  Data złożenia: {{order.placeDate | date : 'yyyy-MM-dd HH:mm'}}<br/>
-  Płatność: {{order.payment.name}}<br/><br/>
+  Date of submission: {{order.placeDate | date : 'yyyy-MM-dd HH:mm'}}<br/>
+  Payment: {{order.payment.name}}<br/><br/>
 
   <form fxLayout="row" fxLayoutAlign="space-between start">
     <div>Status: {{order.orderStatus}}</div>
-    <button mat-flat-button color="primary">Zapisz</button>
+    <button mat-flat-button color="primary">Save</button>
   </form>
 </div>
 <div>
-  <h2>Pozycje</h2>
+  <h2>Positions</h2>
   <div fxLayout="row" fxLayoutAlign="space-between start">
     <div class="order-hcol-1">
-      Nazwa
+      Name
     </div>
-    <div class="order-hcol-2">Ilość</div>
-    <div class="order-hcol-3">Wartość</div>
+    <div class="order-hcol-2">Quantity</div>
+    <div class="order-hcol-3">Value</div>
   </div>
   <div *ngFor="let row of order.orderRows" fxLayout="row" fxLayoutAlign="space-between start">
     <div class="order-col-1">
@@ -29,16 +29,16 @@
     <div>{{row.quantity * row.price}}</div>
   </div>
   <div fxLayoutAlign="end end">
-    <b>Wartość: {{order.grossValue}}</b>
+    <b>Value: {{order.grossValue}}</b>
   </div>
 </div>
 <div>
-  <h2>Dane klienta</h2>
-  <div>Imię: {{order.firstname}}</div>
-  <div>Nazwisko: {{order.lastname}}</div>
-  <div>Ulica: {{order.street}}</div>
-  <div>Kod: {{order.zipcode}}</div>
-  <div>Miasto: {{order.city}}</div>
+  <h2>Customer data</h2>
+  <div>First name: {{order.firstname}}</div>
+  <div>Last name: {{order.lastname}}</div>
+  <div>Street: {{order.street}}</div>
+  <div>Zipcode: {{order.zipcode}}</div>
+  <div>City: {{order.city}}</div>
   <div>Email: {{order.email}}</div>
-  <div>Tel: {{order.phone}}</div>
+  <div>Phone: {{order.phone}}</div>
 </div>
