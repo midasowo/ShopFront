@@ -43,6 +43,8 @@ export class AdminOrderUpdateComponent {
         this.formGroup.setValue({
           orderStatus: order.orderStatus
         })
+        order.orderLogs.sort((el1, el2) =>
+          new Date(el2.created).getTime() - new Date(el1.created).getTime())
       });
   }
 
