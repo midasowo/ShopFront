@@ -1,5 +1,6 @@
 import {AdminOrderDetails} from "./adminOrderDetails"
 import {AdminPayment} from "./adminPayment"
+import {AdminOrderLog} from "./AdminOrderLog";
 
 export interface AdminOrder {
   id: number,
@@ -15,4 +16,5 @@ export interface AdminOrder {
   email: string,
   phone: string,
   payment: AdminPayment
+  orderLogs: AdminOrderLog[]
 }
