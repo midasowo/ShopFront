@@ -27,4 +27,10 @@ export class AdminOrderService {
   getInitData(): Observable<any> {
     return this.http.get<any>("/api/admin/orders/initData")
   }
+
+  exportData(from: string, to: string, orderStatus: string): Observable<any> {
+    return this.http.get(`/api/admin/orders/export?from=${from}&to=${to}&orderStatus=${orderStatus}`,
+      {responseType: 'blob', observe: 'response'}
+    )
+  }
 }
