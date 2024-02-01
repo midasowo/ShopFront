@@ -15,7 +15,7 @@ export class AdminOrderStatsComponent implements AfterViewInit {
 
   @ViewChild("stats") private stats!: ElementRef
   chart!: Chart
-  orderCount: number = 0
+  ordersCount: number = 0
   salesSum: number = 0
 
   private data = {
@@ -92,8 +92,8 @@ export class AdminOrderStatsComponent implements AfterViewInit {
         this.data.datasets[0].data = stats.orders
         this.data.datasets[1].data = stats.sales
         this.chart.update()
-        this.orderCount = stats.orders.reduce((acc: number, value: number) => acc + value)
-        this.salesSum = stats.sales.reduce((acc: number, value: number) => acc + value)
+        this.ordersCount = stats.ordersCount;
+        this.salesSum = stats.salesSum;
       })
   }
 }
