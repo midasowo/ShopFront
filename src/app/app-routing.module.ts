@@ -30,6 +30,7 @@ import {AdminOrderExportComponent} from "./modules/admin/admin-order/admin-order
 import {AdminOrderStatsComponent} from "./modules/admin/admin-order/admin-order-stats/admin-order-stats.component";
 import {AdminLoginComponent} from "./modules/admin/admin-login/admin-login.component";
 import {FullPageAdminEmptyComponent} from "./layouts/fullpageadminempty/full-page-admin-empty.component";
+import {adminAuthorizeGuard} from "./modules/admin/common/guard/admin-authorize.guard";
 
 const routes: Routes = [
   {
@@ -55,18 +56,22 @@ const routes: Routes = [
     path: '',
     component: FullPageAdminComponent,
     children: [
-      {path: 'admin', component: AdminComponent},
-      {path: 'admin/products', component: AdminProductComponent},
-      {path: 'admin/products/update/:id', component: AdminProductUpdateComponent},
-      {path: 'admin/products/add', component: AdminProductAddComponent},
-      {path: 'admin/categories', component: AdminCategoryComponent},
-      {path: 'admin/categories/add', component: AdminCategoryAddComponent},
-      {path: 'admin/categories/update/:id', component: AdminCategoryUpdateComponent},
-      {path: 'admin/reviews', component: AdminReviewComponent},
-      {path: 'admin/orders', component: AdminOrderComponent},
-      {path: 'admin/orders/update/:id', component: AdminOrderUpdateComponent},
-      {path: 'admin/orders/export', component: AdminOrderExportComponent},
-      {path: 'admin/orders/stats', component: AdminOrderStatsComponent},
+      {path: 'admin', component: AdminComponent, canActivate: [adminAuthorizeGuard]},
+      {path: 'admin/products', component: AdminProductComponent, canActivate: [adminAuthorizeGuard]},
+      {path: 'admin/products/update/:id', component: AdminProductUpdateComponent, canActivate: [adminAuthorizeGuard]},
+      {path: 'admin/products/add', component: AdminProductAddComponent, canActivate: [adminAuthorizeGuard]},
+      {path: 'admin/categories', component: AdminCategoryComponent, canActivate: [adminAuthorizeGuard]},
+      {path: 'admin/categories/add', component: AdminCategoryAddComponent, canActivate: [adminAuthorizeGuard]},
+      {
+        path: 'admin/categories/update/:id',
+        component: AdminCategoryUpdateComponent,
+        canActivate: [adminAuthorizeGuard]
+      },
+      {path: 'admin/reviews', component: AdminReviewComponent, canActivate: [adminAuthorizeGuard]},
+      {path: 'admin/orders', component: AdminOrderComponent, canActivate: [adminAuthorizeGuard]},
+      {path: 'admin/orders/update/:id', component: AdminOrderUpdateComponent, canActivate: [adminAuthorizeGuard]},
+      {path: 'admin/orders/export', component: AdminOrderExportComponent, canActivate: [adminAuthorizeGuard]},
+      {path: 'admin/orders/stats', component: AdminOrderStatsComponent, canActivate: [adminAuthorizeGuard]},
     ]
   },
   {

@@ -3,6 +3,8 @@ import {CommonModule} from '@angular/common';
 import {SharedModule} from "../../../shared/shared.module";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AdminLoginService} from "./admin-login.service";
+import {JwtService} from "../../../shared/common/service/jwt.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-admin-login',
@@ -18,7 +20,9 @@ export class AdminLoginComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private adminLoginService: AdminLoginService
+    private adminLoginService: AdminLoginService,
+    private jwtService: JwtService,
+    private router: Router
   ) {
   }
 
@@ -33,7 +37,11 @@ export class AdminLoginComponent implements OnInit {
     if (this.formGroup.valid) {
       this.adminLoginService.login(this.formGroup.value)
         .subscribe({
-          next: () => this.loginError = false,
+          next: (response) => {
+            this.loginError = false
+            this.jwtService.setToken(response.token)
+            this.router.navigate(["/admin"])
+          },
           error: () => this.loginError = true,
         })
     }

@@ -8,8 +8,9 @@ import {RouterModule} from "@angular/router";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FullPageModule} from "./layouts/fullpage/full-page.module";
 import {FullPageAdminModule} from "./layouts/fullpageadmin/full-page-admin.module";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {CookieService} from "ngx-cookie-service";
+import {JwtInterceptor} from "./modules/admin/common/interceptor/jwt.interceptor";
 
 @NgModule({
   declarations: [
@@ -25,7 +26,9 @@ import {CookieService} from "ngx-cookie-service";
     BrowserAnimationsModule,
     HttpClientModule
   ],
-  providers: [CookieService],
+  providers: [CookieService,
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

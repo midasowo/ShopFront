@@ -10,7 +10,7 @@ export class AdminLoginService {
   constructor(private http: HttpClient) {
   }
 
-  login(crudential: any): Observable<any> {
-    return this.http.post("/api/login", crudential)
+  login(credential: any): Observable<any> {
+    return this.http.post("/api/login", credential)
   }
 }
