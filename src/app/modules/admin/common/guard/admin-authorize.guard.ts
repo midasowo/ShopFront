@@ -4,11 +4,11 @@ import {JwtService} from "../../../../shared/common/service/jwt.service";
 
 export const adminAuthorizeGuard: CanActivateFn = async () => {
   const router = inject(Router)
-  const jwt = inject(JwtService)
+  const jwtService = inject(JwtService)
 
-  if (jwt.getToken()) {
-    return true
+  if (!jwtService.isLoggedIn()) {
+    router.navigateByUrl('/admin/login')
+    return false
   }
-  router.navigateByUrl('/admin/login')
-  return false
+  return true
 }
