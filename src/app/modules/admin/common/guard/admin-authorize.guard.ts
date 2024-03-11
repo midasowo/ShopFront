@@ -6,7 +6,7 @@ export const adminAuthorizeGuard: CanActivateFn = async () => {
   const router = inject(Router)
   const jwtService = inject(JwtService)
 
-  if (!jwtService.isLoggedIn()) {
+  if (!jwtService.isLoggedIn() || !jwtService.getAdminAccess()) {
     router.navigateByUrl('/admin/login')
     return false
   }

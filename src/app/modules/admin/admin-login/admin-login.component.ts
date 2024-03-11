@@ -15,7 +15,7 @@ import {Router} from "@angular/router";
 })
 export class AdminLoginComponent implements OnInit {
 
-  formGroup!: FormGroup
+  loginForm!: FormGroup
   loginError = false
 
   constructor(
@@ -27,19 +27,22 @@ export class AdminLoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.formGroup = this.formBuilder.group({
+    this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required],
     })
   }
 
   submit() {
-    if (this.formGroup.valid) {
-      this.adminLoginService.login(this.formGroup.value)
+    if (this.loginForm.valid) {
+      this.adminLoginService.login(this.loginForm.value)
         .subscribe({
           next: (response) => {
             this.loginError = false
-            this.jwtService.setToken(response.token)
+            if (response.adminAccess) {
+              this.jwtService.setToken(response.token)
+              this.jwtService.setAdminAccess(true)
+            }
             this.router.navigate(["/admin"])
           },
           error: () => this.loginError = true,
