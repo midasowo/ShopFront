@@ -6,6 +6,7 @@ import {FlexModule} from "@angular/flex-layout";
 import {CookieService} from "ngx-cookie-service";
 import {HeaderService} from "./header.service";
 import {CartIconService} from "../../common/service/cart-icon.service";
+import {JwtService} from "../../common/service/jwt.service";
 
 @Component({
   selector: 'app-header',
@@ -17,11 +18,13 @@ import {CartIconService} from "../../common/service/cart-icon.service";
 export class HeaderComponent implements OnInit {
   title = 'Shop';
   cartProductCounter = "";
+  isLoggedIn = false
 
   constructor(
     private cookieService: CookieService,
     private headerService: HeaderService,
-    private cartIconService: CartIconService
+    private cartIconService: CartIconService,
+    private jwtService: JwtService
   ) {
   }
 
@@ -29,6 +32,7 @@ export class HeaderComponent implements OnInit {
     this.getCountProducts()
     this.cartIconService.subject
       .subscribe(counter => this.cartProductCounter = this.getCartProductCounter(counter))
+    this.isLoggedIn = this.jwtService.isLoggedIn()
   }
 
   getCountProducts() {
