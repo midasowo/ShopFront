@@ -12,6 +12,9 @@
         <input type="password" matInput formControlName="password">
       </mat-form-field>
       <button mat-flat-button color="primary" [disabled]="!loginForm.valid">Log in</button>
+      <div class="lostPassword">
+        <a routerLink="/lostPassword">Forgot password?</a>
+      </div>
     </form>
   </div>
   <div fxFlex>

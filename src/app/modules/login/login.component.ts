@@ -4,12 +4,12 @@ import {SharedModule} from "../../shared/shared.module";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {LoginService} from "./login.service";
 import {JwtService} from "../../shared/common/service/jwt.service";
-import {Router} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, SharedModule],
+  imports: [CommonModule, SharedModule, RouterLink],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
