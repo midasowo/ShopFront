@@ -10,7 +10,7 @@ import {FullPageModule} from "./layouts/fullpage/full-page.module";
 import {FullPageAdminModule} from "./layouts/fullpageadmin/full-page-admin.module";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {CookieService} from "ngx-cookie-service";
-import {JwtInterceptor} from "./modules/admin/common/interceptor/jwt.interceptor";
+import {JwtInterceptor} from "./modules/common/interceptor/jwt.interceptor";
 
 @NgModule({
   declarations: [

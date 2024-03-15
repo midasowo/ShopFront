@@ -11,6 +11,7 @@ import {OrderSummary} from "./model/order-summary";
 import {InitData} from "./model/init-data";
 import {DefaultModule} from "../../layouts/default/default.module";
 import {CartIconService} from "../../shared/common/service/cart-icon.service";
+import {JwtService} from "../../shared/common/service/jwt.service";
 
 @Component({
   selector: 'app-order',
@@ -26,6 +27,7 @@ export class OrderComponent implements OnInit {
   orderSummary!: OrderSummary
   initData!: InitData
   errorMessage = false
+  isLoggedIn = false
 
   private statuses = new Map<string, string>([
     ["NEW", "New"]
@@ -35,7 +37,8 @@ export class OrderComponent implements OnInit {
     private cookieService: CookieService,
     private orderService: OrderService,
     private formBuilder: FormBuilder,
-    private cartIconService: CartIconService
+    private cartIconService: CartIconService,
+    private jwtService: JwtService
   ) {
   }
 
@@ -53,6 +56,7 @@ export class OrderComponent implements OnInit {
       payment: ['', Validators.required],
     })
     this.getInitData()
+    this.isLoggedIn = this.jwtService.isLoggedIn()
   }
 
   checkCartEmpty() {
