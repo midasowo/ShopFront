@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {RouterModule} from "@angular/router";
+import {Router, RouterModule} from "@angular/router";
 import {MaterialModule} from "../../material.module";
 import {FlexModule} from "@angular/flex-layout";
 import {CookieService} from "ngx-cookie-service";
@@ -24,7 +24,8 @@ export class HeaderComponent implements OnInit {
     private cookieService: CookieService,
     private headerService: HeaderService,
     private cartIconService: CartIconService,
-    private jwtService: JwtService
+    private jwtService: JwtService,
+    private router: Router
   ) {
   }
 
@@ -42,5 +43,11 @@ export class HeaderComponent implements OnInit {
 
   private getCartProductCounter(counter: Number) {
     return String(counter.valueOf() > 0 ? counter : "");
+  }
+
+  logout() {
+    this.jwtService.removeToken()
+    this.isLoggedIn = false
+    this.router.navigate(["/"])
   }
 }

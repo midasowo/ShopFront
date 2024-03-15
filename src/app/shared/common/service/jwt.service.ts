@@ -16,6 +16,10 @@ export class JwtService {
     return localStorage.getItem("token")
   }
 
+  removeToken() {
+    localStorage.removeItem("token")
+  }
+
   isLoggedIn(): boolean {
     let token = localStorage.getItem("token")
     return token != null && this.notExpired(token);
