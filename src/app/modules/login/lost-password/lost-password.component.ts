@@ -48,7 +48,6 @@ export class LostPasswordComponent implements OnInit {
           next: result => {
             this.formError = "";
             this.formGroupResetPassword.reset();
-            this.cleanFormFromValidation();
             this.snackBar.open('An email with a link to change your password has been sent.', '', {
               duration: 3000, panelClass: "snack-bar-bg-color-ok"
             });
@@ -71,19 +70,14 @@ export class LostPasswordComponent implements OnInit {
         next: () => {
           this.formChangePasswordError = ""
           this.formGroupChangePassword.reset()
-          this.cleanFormFromValidation()
           this.snackBar.open('Password has been changed', '', {
             duration: 3000, panelClass: "snack-bar-bg-color-ok"
           });
+          this.router.navigate(["/login"])
         },
         error: error => this.formChangePasswordError = error.error.message
       });
     }
-  }
-
-  private cleanFormFromValidation() {
-    this.formGroupResetPassword.markAsPristine();
-    this.formGroupResetPassword.markAsUntouched();
   }
 
   private passwordIdentical(changePassword: any) {
