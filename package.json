@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --proxy-config proxy.config.json",
+    "start": "node server.js",
+    "dev": "ng serve --proxy-config proxy.config.json",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
@@ -24,8 +25,11 @@
     "@angular/router": "~17.0.2",
     "@types/ws": "^8.5.4",
     "chart.js": "^4.4.1",
+    "express": "^4.19.1",
+    "http-proxy-middleware": "^2.0.6",
     "jwt-decode": "^4.0.0",
     "ngx-cookie-service": "^17.0.1",
+    "path": "^0.12.7",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.2"
@@ -43,5 +47,9 @@
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
     "typescript": "~5.2.2"
+  },
+  "engines": {
+    "node": "v20.9.0",
+    "npm": "9.7.2"
   }
 }
