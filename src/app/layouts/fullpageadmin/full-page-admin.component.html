@@ -4,7 +4,9 @@
     <span class="logo">SHOP PANEL</span>
   </div>
   <div>
-    <button routerLink="">Link</button>
+    <button *ngIf="isLoggedIn" mat-flat-button color="primary" (click)="logout()">
+      <span>Log out</span>
+    </button>
   </div>
 </header>
 <div fxLayout="row" fxFlex>
