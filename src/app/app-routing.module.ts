@@ -34,6 +34,7 @@ import {adminAuthorizeGuard} from "./modules/admin/common/guard/admin-authorize.
 import {ProfileComponent} from "./modules/profile/profile.component";
 import {profileAuthorizeGuard} from "./shared/common/guard/profile-authorize.guard";
 import {LostPasswordComponent} from "./modules/login/lost-password/lost-password.component";
+import {OrderNotificationComponent} from "./modules/order/order-notification/order-notification.component";
 
 const routes: Routes = [
   {
@@ -45,7 +46,8 @@ const routes: Routes = [
       {path: 'products/:slug', component: ProductDetailsComponent},
       {path: 'categories/:slug', component: CategoryComponent},
       {path: 'cart', component: CartComponent},
-      {path: 'order', component: OrderComponent},
+      {path: 'orders', component: OrderComponent},
+      {path: 'orders/notifications/:orderHash', component: OrderNotificationComponent},
       {
         path: 'profile',
         component: ProfileComponent,

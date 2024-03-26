@@ -6,6 +6,7 @@ import {HttpClient} from "@angular/common/http";
 import {OrderSummary} from "./model/order-summary";
 import {OrderDto} from "./model/order-dto";
 import {InitData} from "./model/init-data";
+import {NotificationDto} from "./model/notification-dto";
 
 @Injectable({
   providedIn: 'root'
@@ -28,5 +29,9 @@ export class OrderService {
 
   getInitData(): Observable<InitData> {
     return this.http.get<InitData>("/api/orders/initData")
+  }
+
+  getStatus(hash: any): Observable<NotificationDto> {
+    return this.http.get<NotificationDto>("/api/orders/notifications/" + hash)
   }
 }
