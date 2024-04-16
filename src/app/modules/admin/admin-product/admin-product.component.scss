@@ -29,3 +29,13 @@ table {
   width: 155px;
 }
 
+.price-disable {
+  text-decoration: line-through;
+  color: lightgray;
+}
+
+.sale-price {
+  color: green;
+  font-weight: 600;
+}
+

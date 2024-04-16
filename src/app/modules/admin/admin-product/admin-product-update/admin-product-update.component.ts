@@ -44,6 +44,7 @@ export class AdminProductUpdateComponent implements OnInit {
       fullDescription: [''],
       categoryId: ['', [Validators.required]],
       price: ['', [Validators.required, Validators.min(0.01)]],
+      salePrice: ['', [Validators.min(0.01)]],
       currency: ['PLN', Validators.required],
       slug: ['', [Validators.required, Validators.minLength(3)]],
     })
@@ -95,6 +96,7 @@ export class AdminProductUpdateComponent implements OnInit {
       fullDescription: product.fullDescription,
       categoryId: product.categoryId,
       price: product.price,
+      salePrice: product.salePrice,
       currency: product.currency,
       slug: product.slug
     });

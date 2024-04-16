@@ -1,4 +1,4 @@
-import {Review} from "./Review";
+import {Review} from "./review";
 
 export interface ProductDetails {
   id: number,
@@ -7,6 +7,7 @@ export interface ProductDetails {
   fullDescription: string,
   category: string,
   price: number,
+  salePrice: number,
   currency: string,
   image: string,
   slug: string,

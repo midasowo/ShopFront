@@ -32,3 +32,21 @@ a {
 a:hover {
   color: #777;
 }
+
+.product-sale-price {
+  color: green;
+  font-weight: 500;
+  font-size: 30px;
+  margin-top: 20px;
+}
+
+.product-price-disable {
+  color: lightgray;
+  text-decoration: line-through;
+  font-size: 22px;
+}
+
+.price-container {
+  display: flex;
+  flex-direction: column;
+}

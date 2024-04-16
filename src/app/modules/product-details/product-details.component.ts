@@ -5,7 +5,7 @@ import {ProductDetails} from "./model/product-details";
 import {ProductDetailsService} from "./product-details.service";
 import {ActivatedRoute, RouterLink} from "@angular/router";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {Review} from "./model/Review";
+import {Review} from "./model/review";
 import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({

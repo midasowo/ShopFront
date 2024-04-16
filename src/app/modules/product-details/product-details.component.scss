@@ -18,3 +18,22 @@
   margin: 20px 0;
   padding: 7px;
 }
+
+.product-sale-price {
+  color: green;
+  font-weight: 500;
+  font-size: 30px;
+  margin-top: 20px;
+  margin-left: 5px;
+}
+
+.product-price-disable {
+  color: lightgray;
+  text-decoration: line-through;
+  font-size: 22px;
+}
+
+.price-container {
+  display: flex;
+  flex-direction: column;
+}

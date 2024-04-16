@@ -21,7 +21,12 @@
     </div>
     <div>
       <mat-card-header>
-        <div class="product-price">{{ product.price }} {{ product.currency }}</div>
+        <div *ngIf="product.salePrice" class="price-container">
+          <div class="product-sale-price" *ngIf="product.salePrice">{{ product.salePrice }} {{ product.currency }}</div>
+          <div class="product-price"
+               [ngClass]="{'product-price-disable': product.salePrice}">{{ product.price }} {{ product.currency }}</div>
+        </div>
+        <div *ngIf="!product.salePrice" class="product-price">{{ product.price }} {{ product.currency }}</div>
       </mat-card-header>
     </div>
   </div>

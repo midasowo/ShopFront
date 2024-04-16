@@ -13,7 +13,7 @@
   font-size: 30px;
   font-weight: 500;
   margin-top: 20px;
-  color: $warn;
+  color: $primary;
 }
 
 .product-content {
@@ -31,4 +31,22 @@ a {
 
 a:hover {
   color: #777;
+}
+
+.product-sale-price {
+  color: green;
+  font-weight: 500;
+  font-size: 30px;
+  margin-top: 20px;
+}
+
+.product-price-disable {
+  color: lightgray;
+  text-decoration: line-through;
+  font-size: 22px;
+}
+
+.price-container {
+  display: flex;
+  flex-direction: column;
 }
