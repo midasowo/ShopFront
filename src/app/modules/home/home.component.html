@@ -30,8 +30,9 @@
     </div>
   </div>
   <mat-card-actions align="end" fxLayoutGap="10">
-    <button mat-flat-button color="accent" routerLink="{{'/products/' + product.slug}}">Pokaż</button>
-    <button mat-flat-button color="warn" routerLink="/cart" [queryParams]="{productId: product?.id}">Do koszyka</button>
+    <button mat-flat-button color="accent" routerLink="{{'/products/' + product.slug}}">Show</button>
+    <button mat-flat-button color="warn" routerLink="/cart" [queryParams]="{productId: product?.id}">Add to cart
+    </button>
   </mat-card-actions>
 </mat-card>
 
